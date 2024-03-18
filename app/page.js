@@ -1,113 +1,228 @@
-import Image from "next/image";
+import Navbar from '@components/Navbar'
+import React from 'react'
+import './../app/globals.css';
+import Image from 'next/image';
+import play from './../public/image/play.png'
+import copy from './../public/image/copy.png'
+import mark from './../public/image/mark.png'
+import bulb from './../public/image/bulb.png'
+import share from './../public/image/share.png'
+import info from './../public/image/info.png'
+import star from './../public/image/star.png'
+import ContFot from '@components/ContFot';
+import Dropdown from '@components/Dropdown';
 
-export default function Home() {
+
+const HomePage = () => {
+  const categories = [
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/dua.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/cloth.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/moon.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/lamp.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/pray.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'duas for sneesing',
+      img: './../public/categoryimg/mosq.png',
+      subcategories: [
+        { id: 21, name: 'ddddddddddddddddddd' },
+        { id: 22, name: 'ddddddddddddddddddd' }
+      ]
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <section className='py-2'>
+        <Navbar />
+      </section>
+
+      <section className='flex md:gap-6 h-96'>
+
+        {/* category section */}
+        <div className='hidden sm:block md:w-[500px] h-[85vh] overflow-y-auto bg-white rounded-t-xl'>
+          <div className='custom-green h-14 flex text-sm text-white justify-center items-center'>
+            ক্যাটাগরি
+          </div>
+          <div className='p-3'>
+            <label className="input input-bordered flex items-center gap-2">
+              <div className='p-2 rounded-lg'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+              </div>
+              <input type="text" className="grow w-44" placeholder="Search categories" />
+
+            </label>
+          </div>
+
+          {categories.map((category) => (
+            <Dropdown key={category.id} categories={categories} />
+          ))}
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+        {/* content card */}
+        <div className='sm:w-full h-[85vh] overflow-y-auto mr-2 '>
+          <div className='rounded-xl text-sm font-serif bg-white pl-6 flex items-center h-14'>
+            <span className='text-green font-bold'>পরিচ্ছেদঃ </span> বান্দা তার রবের মুখাপেক্ষী
+          </div>
+
+          {/* content card proyojone comp create korbo */}
+          <div class="bg-white rounded-lg shadow-md mt-5 p-6">
+            <div className='flex gap-4 pb-6 items-center'>
+              <Image
+                src={star} // Replace with your image path
+                alt="Image 2"
+                width={40}
+                height={40}
+                className="w-9 h-9 "
+              />
+              <p>৩. দাসমুক্তির সওয়াব</p>
+            </div>
+
+            <p class="pb-3">নিম্নোক্ত বাণীটি ১০ বার বলবে -
+
+            </p>
+
+            <p className='py-5'>নবী (ﷺ) রাতের বেলা উঠে সালাতের শুরুতে যে দোয়া পড়তেন, তার এক জায়গায় আছে {" "}-</p>
+
+            <p className='py-4 text-3xl text-right'>/اِهْدِنِي لِمَا اخْتُلِفَ فِيهِ مِنَ الْحَقِّ بِإِذْنِكَ إِنَّكَ تَهْدِي مَنْ تَشَاءُ إِلَى صِرَاطٍ مُّسْتَقِيْمٍ/</p>
+
+            <p className='py-4'>উচ্চারণঃ //ইহদিনী লিমাখতুলিফা ফীহি মিনাল হাক্কি‌ বিইযনিকা ইন্নাকা তাহ্‌দী মান তাশা-উ ইলা- সিরা-তিম মুস্তাকীম//</p>
+
+            <p className='pb-8'>অনুবাদঃ// যে সত্য নিয়ে মতবিরোধ দেখা দিয়েছে, তোমার ইচ্ছায় আমাকে তার সঠিক পথ দেখিয়ে দাও। তুমি যাকে চাও, তাকে সঠিক পথের দিশা দিয়ে থাকো।//</p>
+
+            <div className='pb-8'>
+              <p className='text-green'>রেফারেন্স</p>
+              <p>সূরা আল-ফাতিহা ১:৫</p>
+            </div>
+
+            {/* footer images */}
+            
+            <ContFot />
+
+          </div>
+          <div class="bg-white rounded-lg shadow-md mt-5 p-6">
+            <div className='flex gap-4 pb-6 items-center'>
+              <Image
+                src={star} // Replace with your image path
+                alt="Image 2"
+                width={24}
+                height={24}
+                className="w-9 h-9 "
+              />
+              <p>৩. দাসমুক্তির সওয়াব</p>
+            </div>
+            <p className='py-4 text-3xl text-right'>/اِهْدِنِي لِمَا اخْتُلِفَ فِيهِ مِنَ الْحَقِّ بِإِذْنِكَ إِنَّكَ تَهْدِي مَنْ تَشَاءُ إِلَى صِرَاطٍ مُّسْتَقِيْمٍ/</p>
+
+            <p className='py-4'>উচ্চারণঃ //ইহদিনী লিমাখতুলিফা ফীহি মিনাল হাক্কি‌ বিইযনিকা ইন্নাকা তাহ্‌দী মান তাশা-উ ইলা- সিরা-তিম মুস্তাকীম//</p>
+
+
+            <div className='pb-8'>
+              <p className='text-green'>রেফারেন্স</p>
+              <p>সূরা আল-ফাতিহা ১:৫</p>
+            </div>
+
+            {/* footer images */}
+            {/* <div className="flex justify-between">
+              <div>
+                <Image
+                  src={play} // Replace with your image path
+                  alt="Image 1"
+                  width={48}
+                  height={48}
+                  className="object-cover mr-4 rounded-lg"
+                />
+              </div>
+              <div className="flex gap-8 pr-3 items-center">
+                <Image
+                  src={copy} // Replace with your image path
+                  alt="Image 2"
+                  width={24}
+                  height={24}
+                  className="w-5 h-5 mt-1"
+                />
+                <Image
+                  src={mark} // Replace with your image path
+                  alt="Image 3"
+                  width={24}
+                  height={24}
+                  className="w-7 h-7  "
+                />
+                <Image
+                  src={bulb} // Replace with your image path
+                  alt="Image 4"
+                  width={24}
+                  height={24}
+                  className="w-7 h-7 "
+                />
+                <Image
+                  src={share} // Replace with your image path
+                  alt="Image 5"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6 "
+                />
+                <Image
+                  src={info} // Replace with your image path
+                  alt="Image 6"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6  "
+                />
+              </div>
+            </div> */}
+            <ContFot />
+
+          </div>
+
+
+        </div>
+      </section>
+
+    </div>
+  )
 }
+
+export default HomePage
